@@ -19,11 +19,19 @@ The module is made to be modularized, making it easy to integrate with other exi
 ## Getting Started
 
  1. Download and install Docker, Postgresql, Java with their appropriate versions.
- 2. Open the project
- 3. run in the terminal:
-    > npm install
- 4. build then run the application
+ 2. Open CMD terminal and enter the command
+    > docker run --name [container_name] -e POSTGRES_PASSWORD=[your_password] -d postgres
+ 3.  Open the application
+ 4. check application.properties in the `/src/main/resources` if the port on `spring.datasource.url` is the same as the port assigned on the docker container
 
+## Running the Application
+
+ 1. run in the terminal:
+    > npm install
+ 2. - If you are using Intellij: Build then run the application
+    - If you are not using Intellij: Enter the command at the terminal
+    > npm start 
+    
 ### Issues
 - Login page opens but logging in does not work
 - Registration page does not open, and cant determine if it works
