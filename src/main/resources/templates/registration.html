@@ -10,20 +10,20 @@
     <div>
         <label>username</label>
         <input th:field="*{username}"/>
-        <p th:each="error: ${#fields.errors('firstName')}"
-           th:text="${error}">Validation error</p>
+        <p th:each="error: ${#fields.hasErrors('username')}"
+           th:text="${error}"/>
     </div>
     <div>
         <label>email</label>
         <input type="email" th:field="*{email}"/>
-        <p th:each="error : ${#fields.errors('email')}"
-           th:text="${error}">Validation error</p>
+        <p th:each="error : ${#fields.hasErrors('email')}"
+           th:text="${error}"/>
     </div>
     <div>
         <label>password</label>
         <input type="password" th:field="*{password}"/>
-        <p th:each="error : ${#fields.errors('password')}"
-           th:text="${error}">Validation error</p>
+        <p th:each="error : ${#fields.hasErrors('password')}"
+           th:text="${error}"/>
     </div>
     <div>
         <label>confirm</label>

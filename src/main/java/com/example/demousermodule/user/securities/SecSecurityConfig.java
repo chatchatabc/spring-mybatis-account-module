@@ -45,6 +45,8 @@ public class SecSecurityConfig {
         http.csrf()
                 .disable()
                 .authorizeRequests()
+                .antMatchers("/registration")
+                .permitAll()
                 .antMatchers("/admin/**")
                 .hasRole("ADMIN")
                 .antMatchers("/anonymous*")

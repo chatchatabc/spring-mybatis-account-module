@@ -1,9 +1,6 @@
 package com.example.demousermodule.user.controllers;
 
 import com.example.demousermodule.user.entities.User;
-import com.example.demousermodule.user.securities.SecSecurityConfig;
-import com.example.demousermodule.user.services.AppInitializer;
-import com.example.demousermodule.user.services.LoginService;
 import com.example.demousermodule.user.services.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,14 +9,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletResponse;
-import java.util.List;
-import java.util.Optional;
+import java.rmi.ServerException;
 
 @Controller
 public class LoginController {
 
-
+    @Autowired
     MyUserDetailsService myUserDetailsService;
 
     @GetMapping("/login")
@@ -28,10 +23,12 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<User> getbyEmail(String email){
-        UserDetails user = myUserDetailsService.loadUserByUsername(email);
-
-            return new ResponseEntity<>(HttpStatus.OK);
-
+    public ResponseEntity<User> getbyEmail(@RequestBody User loginUser) throws ServerException {
+        UserDetails user = myUserDetailsService.loadUserByUsername(loginUser.getEmail());
+        if (user == null) {
+            throw new ServerException("Can't resolve");
+        } else {
+            return new ResponseEntity<User>(loginUser, HttpStatus.OK);
+        }
     }
 }

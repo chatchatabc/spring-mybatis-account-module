@@ -5,21 +5,23 @@ import com.example.demousermodule.user.entities.User;
 import com.example.demousermodule.user.services.RegisterService;
 import com.example.demousermodule.user.services.UserAlreadyExistAuthenticationException;
 import org.jetbrains.annotations.NotNull;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.View;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping(path = "/registration")
 public class RegisController {
+
+    @Autowired
     private RegisterService registerService;
-    private ModelAndView mav;
 
     @GetMapping("/registration")
     public String showRegistrationForm(WebRequest request, Model model) {
@@ -29,16 +31,15 @@ public class RegisController {
     }
 
     @PostMapping("/registration")
-    public ModelAndView registerUserAccount(@ModelAttribute("user") @Valid UserDto userDto,
+    public String registerUserAccount(@ModelAttribute("user") @Valid UserDto userDto,
                                             HttpServletRequest request, Errors errors) {
 
         try {
             registerService.registerNewUserAccount(userDto);
         } catch (UserAlreadyExistAuthenticationException uaeEx) {
-            mav.addObject("message", "An account for that username/email already exists.");
-            return mav;
+            return "An account for that username/email already exists.";
         }
 
-        return new ModelAndView("successRegister", "user", userDto);
+        return "redirect:/registration";
     }
 }
