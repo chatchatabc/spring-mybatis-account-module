@@ -1,8 +1,10 @@
-# UserModule
+# Spring-MyBatis-Account-Module
+
 Basic login-register template that helps speed development of the systems that needs an accounting module.
 The module is made to be modularized, making it easy to integrate with other existing modules as well as maintain.
 
 ## Requirements
+
 - [Docker](https://docs.docker.com/get-docker/)
 - [Postgresql (v15.0)](https://www.postgresql.org/download/)
 - [Intellij (EAP) *preferred*](https://www.jetbrains.com/toolbox-app/)
@@ -11,7 +13,8 @@ The module is made to be modularized, making it easy to integrate with other exi
 - [Java SDK (v17.0.5)](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
 - [Github](https://git-scm.com/downloads)
 
-## Modules
+## Features
+
 * Login page
 * Registration page
 * Will add more in the future
@@ -19,19 +22,23 @@ The module is made to be modularized, making it easy to integrate with other exi
 ## Getting Started
 
  1. Download and install Docker, Postgresql, Java with their appropriate versions.
- 2. Open CMD terminal and enter the command
-    > docker run --name [container_name] -e POSTGRES_PASSWORD=[your_password] -d postgres
- 3.  Open the application
- 4. check application.properties in the `/src/main/resources` if the port on `spring.datasource.url` is the same as the port assigned on the docker container
-
-## Running the Application
-
- 1. run in the terminal:
-    > npm install
- 2. - If you are using Intellij: Build then run the application
-    - If you are not using Intellij: Enter the command at the terminal
-    > npm start 
+ 2. Open the application then enter the command at terminal/shell
+    ```sh
+        docker compose up
+    ```
+ 3. check application.properties in the `/src/main/resources` if the port on `spring.datasource.url` is the same as the port assigned on the docker container 
+ 4. Build then run the application
     
-### Issues
+## Issues
+
 - Login page opens but logging in does not work
 - Registration page does not open, and cant determine if it works
+
+## References
+ - https://www.baeldung.com/thymeleaf-in-spring-mvc
+ - https://www.baeldung.com/security-none-filters-none-access-permitAll
+ - https://www.baeldung.com/registration-with-spring-mvc-and-spring-security
+ - https://www.baeldung.com/spring-security-login
+ - https://mybatis.org/spring/
+ - https://www.baeldung.com/spring-mybatis
+ - https://www.youtube.com/watch?v=ZP8Um12Z_mk
