@@ -27,7 +27,7 @@ The module is made to be modularized, making it easy to integrate with other exi
         docker compose up
     ```
  3. check application.properties in the `/src/main/resources` if the port on `spring.datasource.url` is the same as the port assigned on the docker container 
- 4. Build then run the application
+ 4. Build then run the application (Automatically creates table needed to store data if it does not exist)
     
 ## Issues
 
