@@ -1,4 +1,4 @@
-package com.example.springmybatisaccountmodule.user.controllers;
+package com.example.springmybatisaccountmodule.user.Domain.controllers;
 
 import com.example.springmybatisaccountmodule.user.Application.controllers.RegisController;
 import com.example.springmybatisaccountmodule.user.Application.dto.UserRegisDto;

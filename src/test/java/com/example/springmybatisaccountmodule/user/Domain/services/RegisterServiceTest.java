@@ -1,4 +1,4 @@
-package com.example.springmybatisaccountmodule.user.services;
+package com.example.springmybatisaccountmodule.user.Domain.services;
 
 import org.junit.jupiter.api.Test;
 
