@@ -1,10 +1,10 @@
-DROP TABLE IF EXISTS users;
 TABLE users
 (
-    id int PRIMARY KEY auto_increment,
+    id SERIAL PRIMARY KEY,
     username    VARCHAR,
     password   VARCHAR,
     email VARCHAR,
-    dateCreated date,
-    lastLogin date
+    roles VARCHAR
+    dateAt timestamp,
+    lastLogin timestamp
 );

@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <typeAlias type="com.example.demousermodule.user.entities.User" alias="User"/>
+        <typeAlias type="com.example.springmybatisaccountmodule.user.Domain.entities.User" alias="User"/>
     </typeAliases>
     <mappers>
         <mapper resource="mapper/UserMapper.xml"/>

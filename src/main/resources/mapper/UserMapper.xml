@@ -2,27 +2,26 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demousermodule.user.repositories.UserRepository">
+<mapper namespace="com.example.springmybatisaccountmodule.user.Domain.repositories.UserRepository">
 
     <resultMap id="UserResultMap" type="User">
-        <result property="id" column="id"/>
         <result property="username" column="username"/>
         <result property="password" column="password"/>
         <result property="email" column="email"/>
-        <result property="dateCreated" column="dateCreated"/>
+        <result property="dateCreated" column="dateAt"/>
         <result property="lastLogin" column="lastLogin"/>
     </resultMap>
 
     <select id="createTable" resultMap="UserResultMap">
-        DROP TABLE IF EXISTS users;
-        CREATE TABLE users
+        CREATE TABLE IF NOT EXISTS users
         (
-        id INT PRIMARY KEY,
+        id SERIAL PRIMARY KEY,
         username    TEXT,
         password   TEXT,
         email TEXT,
-        dateCreated date,
-        lastLogin date
+        roles TEXT,
+        dateAt timestamp,
+        lastLogin timestamp
         );
     </select>
 
@@ -31,22 +30,32 @@
         FROM users
         WHERE email = #{email:VARCHAR}
     </select>
-    <select id="insert" resultMap="UserResultMap">
+    <select id="findEmailWithPassword" resultMap="UserResultMap">
+        SELECT *
+        FROM users
+        WHERE email = #{email:VARCHAR}
+        AND password = #{password:VARCHAR}
+    </select>
+    <delete id="delete">
+        DELETE FROM users
+               WHERE email = #{email:VARCHAR};
+    </delete>
+    <insert id="insert" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
         INSERT INTO users
             (id,
              username,
              password,
              email,
-             dateCreated,
+             dateAt,
              lastLogin
              )
         VALUES(
-                #{id:INTEGER},
-               #{username:VARCHAR},
+               DEFAULT,
+                #{username:VARCHAR},
                #{password:VARCHAR},
                #{email:VARCHAR},
-               #{dateCreated:DATE},
-               #{lastLogin:DATE}
+               #{dateCreated:TIMESTAMP},
+               #{lastLogin:TIMESTAMP}
                )
-    </select>
+    </insert>
 </mapper>

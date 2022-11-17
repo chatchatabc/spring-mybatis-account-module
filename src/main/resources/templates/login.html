@@ -6,11 +6,11 @@
 </head>
 <body>
 <h1>Login</h1>
-<form name='login' action="login" method='POST'>
+<form name='login' th:action="@{/login}" method='post'>
     <table>
         <tr>
             <td>User:</td   >
-            <td><input type='text' name='username' value=''></td>
+            <td><input type='text' name='email' value=''></td>
         </tr>
         <tr>
             <td>Password:</td>
