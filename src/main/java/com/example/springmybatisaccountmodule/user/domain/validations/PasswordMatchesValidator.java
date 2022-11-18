@@ -1,6 +1,6 @@
-package com.example.springmybatisaccountmodule.user.Domain.validations;
+package com.example.springmybatisaccountmodule.user.domain.validations;
 
-import com.example.springmybatisaccountmodule.user.Application.dto.UserRegisDto;
+import com.example.springmybatisaccountmodule.user.application.dto.UserRegisDto;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

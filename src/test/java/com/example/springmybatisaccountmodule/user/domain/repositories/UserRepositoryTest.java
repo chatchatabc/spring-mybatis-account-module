@@ -1,6 +1,6 @@
-package com.example.springmybatisaccountmodule.user.Domain.repositories;
+package com.example.springmybatisaccountmodule.user.domain.repositories;
 
-import com.example.springmybatisaccountmodule.user.Application.controllers.LoginController;
+import com.example.springmybatisaccountmodule.user.application.controllers.LoginController;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

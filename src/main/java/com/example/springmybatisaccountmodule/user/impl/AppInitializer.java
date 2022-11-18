@@ -1,6 +1,6 @@
-package com.example.springmybatisaccountmodule.user.Impl;
+package com.example.springmybatisaccountmodule.user.impl;
 
-import com.example.springmybatisaccountmodule.user.Infrastructure.securities.SecSecurityConfig;
+import com.example.springmybatisaccountmodule.user.application.securities.SecSecurityConfig;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;

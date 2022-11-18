@@ -1,10 +1,9 @@
-package com.example.springmybatisaccountmodule.user.Domain.entities;
+package com.example.springmybatisaccountmodule.user.domain.entities;
 
 import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Collection;
 import java.util.List;
 
 @Entity

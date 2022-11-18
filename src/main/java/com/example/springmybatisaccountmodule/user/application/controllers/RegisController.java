@@ -1,8 +1,8 @@
-package com.example.springmybatisaccountmodule.user.Application.controllers;
+package com.example.springmybatisaccountmodule.user.application.controllers;
 
-import com.example.springmybatisaccountmodule.user.Application.dto.UserRegisDto;
-import com.example.springmybatisaccountmodule.user.Domain.services.RegisterService;
-import com.example.springmybatisaccountmodule.user.Impl.UserAlreadyExistAuthenticationException;
+import com.example.springmybatisaccountmodule.user.application.dto.UserRegisDto;
+import com.example.springmybatisaccountmodule.user.domain.services.RegisterService;
+import com.example.springmybatisaccountmodule.user.impl.UserAlreadyExistAuthenticationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

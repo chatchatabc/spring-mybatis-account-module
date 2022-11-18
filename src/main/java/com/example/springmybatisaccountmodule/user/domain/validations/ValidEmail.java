@@ -1,4 +1,4 @@
-package com.example.springmybatisaccountmodule.user.Domain.validations;
+package com.example.springmybatisaccountmodule.user.domain.validations;
 
 import org.hibernate.validator.internal.constraintvalidators.bv.EmailValidator;
 

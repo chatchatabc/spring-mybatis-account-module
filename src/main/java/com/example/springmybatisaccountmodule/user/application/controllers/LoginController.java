@@ -1,7 +1,7 @@
-package com.example.springmybatisaccountmodule.user.Application.controllers;
+package com.example.springmybatisaccountmodule.user.application.controllers;
 
-import com.example.springmybatisaccountmodule.user.Domain.entities.User;
-import com.example.springmybatisaccountmodule.user.Domain.services.MyUserDetailsService;
+import com.example.springmybatisaccountmodule.user.domain.entities.User;
+import com.example.springmybatisaccountmodule.user.domain.services.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;

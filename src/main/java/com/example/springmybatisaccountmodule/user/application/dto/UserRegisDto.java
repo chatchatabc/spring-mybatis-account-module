@@ -1,7 +1,7 @@
-package com.example.springmybatisaccountmodule.user.Application.dto;
+package com.example.springmybatisaccountmodule.user.application.dto;
 
-import com.example.springmybatisaccountmodule.user.Domain.validations.PasswordMatches;
-import com.example.springmybatisaccountmodule.user.Domain.validations.ValidEmail;
+import com.example.springmybatisaccountmodule.user.domain.validations.PasswordMatches;
+import com.example.springmybatisaccountmodule.user.domain.validations.ValidEmail;
 import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;

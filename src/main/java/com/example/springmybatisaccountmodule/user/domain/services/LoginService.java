@@ -1,7 +1,7 @@
-package com.example.springmybatisaccountmodule.user.Domain.services;
+package com.example.springmybatisaccountmodule.user.domain.services;
 
-import com.example.springmybatisaccountmodule.user.Domain.entities.User;
-import com.example.springmybatisaccountmodule.user.Domain.repositories.UserRepository;
+import com.example.springmybatisaccountmodule.user.domain.entities.User;
+import com.example.springmybatisaccountmodule.user.domain.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 
 @Service

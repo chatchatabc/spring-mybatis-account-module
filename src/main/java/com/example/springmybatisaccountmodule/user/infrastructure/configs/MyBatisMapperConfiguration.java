@@ -1,6 +1,6 @@
-package com.example.springmybatisaccountmodule.user.Infrastructure.configs;
+package com.example.springmybatisaccountmodule.user.infrastructure.configs;
 
-import com.example.springmybatisaccountmodule.user.Domain.repositories.UserRepository;
+import com.example.springmybatisaccountmodule.user.domain.repositories.UserRepository;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.mapper.MapperFactoryBean;
 import org.springframework.context.annotation.Bean;

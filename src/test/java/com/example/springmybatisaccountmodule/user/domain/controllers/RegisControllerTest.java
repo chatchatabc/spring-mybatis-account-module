@@ -1,10 +1,10 @@
-package com.example.springmybatisaccountmodule.user.Domain.controllers;
+package com.example.springmybatisaccountmodule.user.domain.controllers;
 
-import com.example.springmybatisaccountmodule.user.Application.controllers.RegisController;
-import com.example.springmybatisaccountmodule.user.Application.dto.UserRegisDto;
-import com.example.springmybatisaccountmodule.user.Domain.repositories.UserRepository;
-import com.example.springmybatisaccountmodule.user.Domain.services.RegisterService;
-import com.example.springmybatisaccountmodule.user.Impl.UserAlreadyExistAuthenticationException;
+import com.example.springmybatisaccountmodule.user.application.controllers.RegisController;
+import com.example.springmybatisaccountmodule.user.application.dto.UserRegisDto;
+import com.example.springmybatisaccountmodule.user.domain.repositories.UserRepository;
+import com.example.springmybatisaccountmodule.user.domain.services.RegisterService;
+import com.example.springmybatisaccountmodule.user.impl.UserAlreadyExistAuthenticationException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

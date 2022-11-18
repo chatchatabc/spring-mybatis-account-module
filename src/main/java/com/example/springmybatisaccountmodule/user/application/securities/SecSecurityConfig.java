@@ -1,4 +1,4 @@
-package com.example.springmybatisaccountmodule.user.infrastructure.securities;
+package com.example.springmybatisaccountmodule.user.application.securities;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

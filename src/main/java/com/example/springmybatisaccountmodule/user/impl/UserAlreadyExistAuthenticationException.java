@@ -1,4 +1,4 @@
-package com.example.springmybatisaccountmodule.user.Impl;
+package com.example.springmybatisaccountmodule.user.impl;
 
 import javax.naming.AuthenticationException;
 

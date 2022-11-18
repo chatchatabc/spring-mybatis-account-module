@@ -1,9 +1,9 @@
-package com.example.springmybatisaccountmodule.user.Domain.services;
+package com.example.springmybatisaccountmodule.user.domain.services;
 
-import com.example.springmybatisaccountmodule.user.Application.dto.UserRegisDto;
-import com.example.springmybatisaccountmodule.user.Domain.entities.User;
-import com.example.springmybatisaccountmodule.user.Domain.repositories.UserRepository;
-import com.example.springmybatisaccountmodule.user.Impl.UserAlreadyExistAuthenticationException;
+import com.example.springmybatisaccountmodule.user.application.dto.UserRegisDto;
+import com.example.springmybatisaccountmodule.user.domain.entities.User;
+import com.example.springmybatisaccountmodule.user.domain.repositories.UserRepository;
+import com.example.springmybatisaccountmodule.user.impl.UserAlreadyExistAuthenticationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

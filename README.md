@@ -24,7 +24,7 @@ The module is made to be modularized, making it easy to integrate with other exi
  1. Download and install Docker, Postgresql, Java with their appropriate versions.
  2. Open the application then enter the command at terminal/shell
     ```sh
-        docker compose up
+        docker-compose up
     ```
  3. check application.properties in the `/src/main/resources` if the port on `spring.datasource.url` is the same as the port assigned on the docker container 
  4. Build then run the application (Automatically creates table needed to store data if it does not exist)
