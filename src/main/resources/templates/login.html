@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--suppress HtmlUnknownTarget -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,12 +10,12 @@
 <form name='login' th:action="@{/login}" method='post'>
     <table>
         <tr>
-            <td>User:</td   >
-            <td><input type='text' name='email' value=''></td>
+            <td><label for="email">User: </label></td>
+            <td><input type='text' id="email" name='email' value=''></td>
         </tr>
         <tr>
-            <td>Password:</td>
-            <td><input type='password' name='password' /></td>
+            <td><label for="password">Password: </label></td>
+            <td><input type='password' id="password" name='password' /></td>
         </tr>
         <tr style="display: flex; flex-direction: row; justify-content: space-between">
             <td><input name="submit" type="submit" value="submit" /></td>

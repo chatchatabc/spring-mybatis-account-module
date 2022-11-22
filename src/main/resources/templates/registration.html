@@ -1,33 +1,42 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org">
+<!--suppress ThymeleafVariablesResolveInspection -->
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
 <h1>form</h1>
-<form th:action="@{/registration}" th:object="${user}" method="post" enctype="utf8">
+<form th:action="@{/registration}" th:object="${user}" method="post" enctype="text/plain">
     <div>
-        <label>username</label>
-        <input th:field="*{username}"/>
+        <label>
+            username
+            <input th:label="usernameLabel" th:field="*{username}"/>
+        </label>
         <p th:each="error: ${#fields.hasErrors('username')}"
-           th:text="${error}"/>
+           th:text="${error}">Validation error</p>
     </div>
     <div>
-        <label>email</label>
-        <input type="email" th:field="*{email}"/>
+        <label>
+            email
+            <input type="email" th:field="*{email}"/>
+        </label>
         <p th:each="error : ${#fields.hasErrors('email')}"
-           th:text="${error}"/>
+           th:text="${error}">Validation error</p>
     </div>
     <div>
-        <label>password</label>
-        <input type="password" th:field="*{password}"/>
+        <label>
+            password
+            <input type="password" th:field="*{password}"/>
+        </label>
         <p th:each="error : ${#fields.hasErrors('password')}"
-           th:text="${error}"/>
+           th:text="${error}">Validation error</p>
     </div>
     <div>
-        <label>confirm</label>
-        <input type="password" th:field="*{matchingPassword}"/>
+        <label>
+            confirm
+            <input type="password" th:field="*{matchingPassword}"/>
+        </label>
     </div>
     <button type="submit">submit</button>
 </form>

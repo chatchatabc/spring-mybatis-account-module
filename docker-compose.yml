@@ -3,6 +3,7 @@ services:
     image: postgres:15
     environment:
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=root
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_DB=user-list
     ports:
       - 5432:5432
