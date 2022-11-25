@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-@SuppressWarnings("SpringJavaAutowiredFieldsWarningInspection")
+@SuppressWarnings({"SpringJavaAutowiredFieldsWarningInspection", "SameReturnValue"})
 @Controller
 public class RegisController {
 
@@ -26,7 +26,7 @@ public class RegisController {
     }
 
     @PostMapping("/registration")
-    public String registerUserAccount(UserRegisDto userRegisDto) {
+    public String registerUserAccount(@ModelAttribute("user") UserRegisDto userRegisDto) {
 
         User user = new User();
 
@@ -35,9 +35,9 @@ public class RegisController {
         user.setEmail(userRegisDto.getEmail());
         user.setDateCreated(LocalDate.EPOCH);
         user.setLastLogin(LocalDate.EPOCH);
-
+        System.out.println(user);
         try {
-            if(!userRegisDto.getPassword().equals(userRegisDto.getMatchingPassword())) registerService.registerNewUserAccount(user);
+            if(userRegisDto.getPassword().equals(userRegisDto.getMatchingPassword())) registerService.registerNewUserAccount(user);
         } catch (UserAlreadyExistAuthenticationException uaeEx) {
             return "error";
         }

@@ -17,8 +17,26 @@
         <java.version>17</java.version>
         <postgresql.version>42.5.0</postgresql.version>
         <mybatis-spring-boot-starter.version>2.2.2</mybatis-spring-boot-starter.version>
+        <log4j.version>1.2.17</log4j.version>
+        <flyway-core.version>9.8.2</flyway-core.version>
+
+        <!-- Flyway -->
+
+        <flyway.user>postgres</flyway.user>
+        <flyway.password>123456</flyway.password>
+        <flyway.schemas>schema</flyway.schemas>
+
+        <!-- Test -->
+        <rider-core.version>1.35.0</rider-core.version>
+        <rider-spring.version>1.35.0</rider-spring.version>
+        <hsqldb.version>2.7.1</hsqldb.version>
+        <hibernate-core.version>5.3.20.Final</hibernate-core.version>
+        <hibernate-entitymanager.version>4.2.20.Final</hibernate-entitymanager.version>
+        <org.mapstruct.version>1.5.3.Final</org.mapstruct.version>
+        <mapstruct-processor.version>1.4.2.Final</mapstruct-processor.version>
     </properties>
     <dependencies>
+        <!--suppress VulnerableLibrariesLocal -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
@@ -97,12 +115,59 @@
             <scope>runtime</scope>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/log4j/log4j -->
+        <!--suppress VulnerableLibrariesLocal -->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>${flyway-core.version}</version>
+        </dependency>
+
         <!-- testing tools -->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.database-rider</groupId>
+            <artifactId>rider-core</artifactId>
+            <version>${rider-core.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.database-rider</groupId>
+            <artifactId>rider-spring</artifactId>
+            <version>${rider-spring.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>${hsqldb.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+            <version>${org.mapstruct.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+            <version>${mapstruct-processor.version}</version>
         </dependency>
 
     </dependencies>
@@ -118,6 +183,16 @@
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
                         </exclude>
+                        <pluginConfiguration>
+                            <baselineMigrationPrefix>IB</baselineMigrationPrefix>
+                        </pluginConfiguration>
+                        <annotationProcessorPaths>
+                            <path>
+                                <groupId>org.mapstruct</groupId>
+                                <artifactId>mapstruct-processor</artifactId>
+                                <version>${org.mapstruct.version}</version>
+                            </path>
+                        </annotationProcessorPaths>
                     </excludes>
                 </configuration>
             </plugin>

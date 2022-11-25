@@ -8,7 +8,7 @@ public interface UserRepository {
 
     User findOne(String email);
 
-    int insert(User user);
+    long insert(User user);
 
     void delete(String email);
 

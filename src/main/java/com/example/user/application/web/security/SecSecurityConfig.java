@@ -29,7 +29,7 @@ public class SecSecurityConfig {
         http.csrf()
                 .disable()
                 .authorizeRequests()
-                .antMatchers("/login", "/registration", "/homepage")
+                .antMatchers("/login", "/registration")
                 .permitAll()
                 .anyRequest()
                 .authenticated()

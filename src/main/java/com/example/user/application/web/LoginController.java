@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.rmi.ServerException;
 
-@SuppressWarnings("SpringJavaAutowiredFieldsWarningInspection")
+@SuppressWarnings({"SpringJavaAutowiredFieldsWarningInspection", "SameReturnValue"})
 @Controller
 public class LoginController {
 
@@ -30,7 +30,7 @@ public class LoginController {
             throw new ServerException("Email does not exist");
         } else {
             if(user.getPassword().equals(loginUser.getPassword())){
-                return "redirect:/homepage";
+                return "homepage";
             }else{
                 throw new ServerException("Wrong Password");
             }

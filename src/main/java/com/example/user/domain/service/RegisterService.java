@@ -20,7 +20,7 @@ public class RegisterService implements UserService {
     private UserValidations userValidations;
 
     @Override
-    public int registerNewUserAccount(User user) throws UserAlreadyExistAuthenticationException {
+    public long registerNewUserAccount(User user) throws UserAlreadyExistAuthenticationException {
         if (userValidations.emailExists(user.getEmail())) {
             throw new UserAlreadyExistAuthenticationException("There is an account with that email address: "
                     + user.getEmail());
