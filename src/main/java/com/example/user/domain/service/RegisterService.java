@@ -12,14 +12,13 @@ import javax.transaction.Transactional;
 @SuppressWarnings("SpringJavaAutowiredFieldsWarningInspection")
 @Service
 @Transactional
-public class RegisterService implements UserService {
+public class RegisterService {
 
     @Autowired
     private UserRepository userRepository;
     @Autowired
     private UserValidations userValidations;
 
-    @Override
     public long registerNewUserAccount(User user) throws UserAlreadyExistAuthenticationException {
         if (userValidations.emailExists(user.getEmail())) {
             throw new UserAlreadyExistAuthenticationException("There is an account with that email address: "

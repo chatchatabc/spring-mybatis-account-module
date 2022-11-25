@@ -33,7 +33,7 @@
         <hibernate-core.version>5.3.20.Final</hibernate-core.version>
         <hibernate-entitymanager.version>4.2.20.Final</hibernate-entitymanager.version>
         <org.mapstruct.version>1.5.3.Final</org.mapstruct.version>
-        <mapstruct-processor.version>1.4.2.Final</mapstruct-processor.version>
+        <mapstruct-processor.version>1.5.3.Final</mapstruct-processor.version>
     </properties>
     <dependencies>
         <!--suppress VulnerableLibrariesLocal -->

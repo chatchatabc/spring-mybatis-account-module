@@ -5,6 +5,7 @@ import javax.validation.ConstraintValidatorContext;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+@SuppressWarnings("unused")
 public class EmailValidator
         implements ConstraintValidator<ValidEmail, String> {
 
