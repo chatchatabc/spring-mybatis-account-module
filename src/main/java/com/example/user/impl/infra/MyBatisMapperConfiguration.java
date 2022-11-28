@@ -1,4 +1,4 @@
-package com.example.user.infra.mybatis;
+package com.example.user.impl.infra;
 
 import com.example.user.domain.repository.UserRepository;
 import org.apache.ibatis.session.SqlSessionFactory;

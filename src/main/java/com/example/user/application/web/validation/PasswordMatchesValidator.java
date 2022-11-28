@@ -1,6 +1,6 @@
 package com.example.user.application.web.validation;
 
-import com.example.user.application.dto.UserRegisDto;
+import com.example.user.application.commons.dto.UserRegisDto;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

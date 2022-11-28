@@ -1,6 +1,6 @@
 package com.example.user.application.web;
 
-import com.example.user.application.dto.UserRegisDto;
+import com.example.user.application.commons.dto.UserRegisDto;
 import com.example.user.domain.model.User;
 import com.example.user.domain.service.RegisterService;
 import com.example.user.impl.domain.UserAlreadyExistAuthenticationException;

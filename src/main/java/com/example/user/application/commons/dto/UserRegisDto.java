@@ -1,4 +1,4 @@
-package com.example.user.application.dto;
+package com.example.user.application.commons.dto;
 
 import com.example.user.application.web.validation.PasswordMatches;
 import com.example.user.application.web.validation.ValidEmail;
