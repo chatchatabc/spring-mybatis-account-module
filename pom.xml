@@ -15,10 +15,9 @@
     <description>spring-mybatis-account-module</description>
     <properties>
         <java.version>17</java.version>
-        <postgresql.version>42.5.0</postgresql.version>
+        <postgresql.version>42.5.1</postgresql.version>
         <mybatis-spring-boot-starter.version>2.2.2</mybatis-spring-boot-starter.version>
-        <log4j.version>1.2.17</log4j.version>
-        <flyway-core.version>9.8.2</flyway-core.version>
+        <flyway-core.version>9.8.3</flyway-core.version>
 
         <!-- Flyway -->
 
@@ -34,6 +33,10 @@
         <hibernate-entitymanager.version>4.2.20.Final</hibernate-entitymanager.version>
         <org.mapstruct.version>1.5.3.Final</org.mapstruct.version>
         <mapstruct-processor.version>1.5.3.Final</mapstruct-processor.version>
+
+        <!-- observability -->
+        <wavefront-spring-boot-starter.version>2.3.1</wavefront-spring-boot-starter.version>
+
     </properties>
     <dependencies>
         <!--suppress VulnerableLibrariesLocal -->
@@ -115,13 +118,7 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/log4j/log4j -->
         <!--suppress VulnerableLibrariesLocal -->
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
 
         <dependency>
             <groupId>org.flywaydb</groupId>
@@ -168,6 +165,32 @@
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct-processor</artifactId>
             <version>${mapstruct-processor.version}</version>
+        </dependency>
+
+        <!-- observability -->
+
+        <!-- https://mvnrepository.com/artifact/com.wavefront/wavefront-spring-boot-starter -->
+        <dependency>
+            <groupId>com.wavefront</groupId>
+            <artifactId>wavefront-spring-boot-starter</artifactId>
+            <version>${wavefront-spring-boot-starter.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-log4j2 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
         </dependency>
 
     </dependencies>
