@@ -1,5 +1,6 @@
 package com.example.user.domain.repository;
 
+import com.example.user.SpringBootBaseTest;
 import com.github.database.rider.core.api.dataset.DataSetFormat;
 import com.github.database.rider.core.api.exporter.ExportDataSet;
 import com.github.database.rider.spring.api.DBRider;
@@ -11,7 +12,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @SpringBootTest
 @DBRider
-class UserRepositoryTest {
+class UserRepositoryTest extends SpringBootBaseTest {
 
     @Autowired
     private UserRepository userTest;

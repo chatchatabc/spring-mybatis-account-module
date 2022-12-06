@@ -1,5 +1,6 @@
 package com.example.user.domain.service;
 
+import com.example.user.SpringBootBaseTest;
 import com.example.user.application.web.LoginController;
 import com.example.user.domain.model.User;
 import com.example.user.domain.repository.UserRepository;
@@ -17,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 @SpringBootTest
 @DBRider
-public class LoginServiceTest {
+public class LoginServiceTest extends SpringBootBaseTest {
 
 
 

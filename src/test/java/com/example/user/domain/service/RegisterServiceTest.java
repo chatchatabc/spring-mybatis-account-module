@@ -1,5 +1,6 @@
 package com.example.user.domain.service;
 
+import com.example.user.SpringBootBaseTest;
 import com.example.user.domain.model.User;
 import com.example.user.domain.repository.UserRepository;
 import com.example.user.impl.domain.UserAlreadyExistAuthenticationException;
@@ -17,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @DBRider
-class RegisterServiceTest {
+class RegisterServiceTest extends SpringBootBaseTest {
 
     @Autowired
     private UserRepository userRepository;
