@@ -29,7 +29,7 @@ public class MyUserDetailsService implements UserDetailsService {
         ArrayList<String> role = new ArrayList<>();
         role.add("ADMIN");
         if (user == null) {
-            throw new UsernameNotFoundException("No user found with email: " + email);
+            return null;
         }
         user.setRoles(role);
         boolean enabled = true;

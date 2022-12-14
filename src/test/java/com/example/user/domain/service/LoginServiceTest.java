@@ -6,21 +6,16 @@ import com.example.user.domain.model.User;
 import com.example.user.domain.repository.UserRepository;
 import com.github.database.rider.core.api.dataset.DataSetFormat;
 import com.github.database.rider.core.api.exporter.ExportDataSet;
-import com.github.database.rider.spring.api.DBRider;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.rmi.ServerException;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-@SpringBootTest
-@DBRider
+
 public class LoginServiceTest extends SpringBootBaseTest {
-
-
 
     @Autowired
     private UserRepository userTest;

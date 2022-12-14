@@ -169,7 +169,6 @@
 
         <!-- observability -->
 
-        <!-- https://mvnrepository.com/artifact/com.wavefront/wavefront-spring-boot-starter -->
         <dependency>
             <groupId>com.wavefront</groupId>
             <artifactId>wavefront-spring-boot-starter</artifactId>
@@ -187,7 +186,6 @@
             </exclusions>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-log4j2 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-log4j2</artifactId>
