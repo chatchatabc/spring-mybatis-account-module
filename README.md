@@ -31,8 +31,7 @@ The module is made to be modularized, making it easy to integrate with other exi
     
 ## Issues
 
-- Login page opens but logging in does not work
-- Registration page does not open, and cant determine if it works
+- none as of the moment
 
 ## References
  - https://www.baeldung.com/thymeleaf-in-spring-mvc

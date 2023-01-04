@@ -31,7 +31,6 @@ public class LoginServiceTest extends SpringBootBaseTest {
         user.setEmail("admin@email.com");
         user.setPassword("123");
 
-
         assertThat(loginTest.getByEmail(user)).isNotNull();
 
     }
