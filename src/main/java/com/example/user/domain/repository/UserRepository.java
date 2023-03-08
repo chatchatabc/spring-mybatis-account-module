@@ -6,10 +6,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserRepository {
 
-    User findOne(String email);
+    User findUserByEmail(String email);
 
-    long insert(User user);
+    long createUser(User user);
 
-    void delete(String email);
+    void removeUser(String email);
 
 }

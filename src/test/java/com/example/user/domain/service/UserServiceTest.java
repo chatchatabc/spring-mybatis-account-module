@@ -1,30 +1,33 @@
 package com.example.user.domain.service;
 
 import com.example.user.SpringBootBaseTest;
+import com.example.user.application.web.UserController;
 import com.example.user.domain.model.User;
 import com.example.user.domain.repository.UserRepository;
-import com.example.user.impl.domain.UserAlreadyExistAuthenticationException;
+import com.example.user.impl.domain.error.UserAlreadyExistAuthenticationException;
 import com.github.database.rider.core.api.dataset.DataSetFormat;
 import com.github.database.rider.core.api.exporter.ExportDataSet;
-import com.github.database.rider.spring.api.DBRider;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
+import java.rmi.ServerException;
+
+import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest
-@DBRider
-class RegisterServiceTest extends SpringBootBaseTest {
+class UserServiceTest extends SpringBootBaseTest {
 
     @Autowired
     private UserRepository userRepository;
 
     @Autowired
-    private RegisterService registerService;
+    private UserController userController;
+
+    @Autowired
+    private UserService userService;
 
     @Mock
     User user;
@@ -34,9 +37,34 @@ class RegisterServiceTest extends SpringBootBaseTest {
         user = new User();
     }
 
-    @AfterEach
-    void deleteTestRegis(){
-        userRepository.delete(user.getEmail());
+    @Test
+    @ExportDataSet(format = DataSetFormat.JSON, outputName = "target/exported/service/user_login_succeed.json")
+    void checkLoginSucceed() throws ServerException {
+
+        User user = new User();
+        user.setEmail("admin@email.com");
+        user.setPassword("123");
+
+        assertThat(userController.authUser(user, null)).isNotNull();
+
+    }
+
+    @Test
+    @ExportDataSet(format = DataSetFormat.JSON, outputName = "target/exported/user_wrong_pass.json")
+    void checkLoginWrongPass() {
+
+        Exception exception = assertThrows(ServerException.class, () -> {
+            User user = new User();
+            user.setEmail("admin@email.com");
+            user.setPassword("1234");
+            userController.authUser(user, null);
+        });
+
+        String expectedMessage = "Wrong Password";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.contains(expectedMessage));
+
     }
 
     @Test
@@ -46,7 +74,7 @@ class RegisterServiceTest extends SpringBootBaseTest {
         user.setPassword("321");
         user.setEmail("anton@anton.com");
         int expected = 1;
-        long actual = assertDoesNotThrow(() -> registerService.registerNewUserAccount(user));
+        long actual = assertDoesNotThrow(() -> userService.registerNewUserAccount(user));
         assertEquals(actual, expected);
     }
 
@@ -59,8 +87,8 @@ class RegisterServiceTest extends SpringBootBaseTest {
             user.setPassword("321");
             user.setEmail("anton@anton.com");
 
-            registerService.registerNewUserAccount(user);
-            registerService.registerNewUserAccount(user);
+            userService.registerNewUserAccount(user);
+            userService.registerNewUserAccount(user);
         });
 
         String expectedMessage = "There is an account with that email address: "
@@ -68,6 +96,11 @@ class RegisterServiceTest extends SpringBootBaseTest {
         String actualMessage = exception.getMessage();
 
         assertTrue(actualMessage.contains(expectedMessage));
+    }
+
+    @AfterEach
+    void deleteTestRegis(){
+        userRepository.removeUser(user.getEmail());
     }
 
 }

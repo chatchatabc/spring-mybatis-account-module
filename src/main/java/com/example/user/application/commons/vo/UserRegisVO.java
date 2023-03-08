@@ -1,15 +1,13 @@
-package com.example.user.application.commons.dto;
+package com.example.user.application.commons.vo;
 
-import com.example.user.application.web.validation.PasswordMatches;
-import com.example.user.application.web.validation.ValidEmail;
 import lombok.Data;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-@PasswordMatches
 @Data
-public class UserRegisDto {
+public class UserRegisVO {
 
     @NotNull
     @NotEmpty
@@ -18,8 +16,9 @@ public class UserRegisDto {
     @NotNull
     @NotEmpty
     private String password;
+
     private String matchingPassword;
-    @ValidEmail
+    @Email
     @NotNull
     @NotEmpty
     private String email;

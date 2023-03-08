@@ -1,4 +1,4 @@
-package com.example.user.impl.domain;
+package com.example.user.impl.domain.error;
 
 import javax.naming.AuthenticationException;
 

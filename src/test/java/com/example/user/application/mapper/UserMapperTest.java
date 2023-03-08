@@ -1,7 +1,7 @@
 package com.example.user.application.mapper;
 
 import com.example.user.SpringBootBaseTest;
-import com.example.user.application.commons.dto.UserRegisDto;
+import com.example.user.application.commons.vo.UserRegisVO;
 import com.example.user.application.commons.mapper.UserMapper;
 import com.example.user.domain.model.User;
 import org.junit.jupiter.api.Test;
@@ -18,12 +18,12 @@ public class UserMapperTest extends SpringBootBaseTest {
         user.setEmail("anton@email.com");
 
         //when
-        UserRegisDto userRegisDto = UserMapper.INSTANCE.modelToDto( user );
+        UserRegisVO userRegisVO = UserMapper.INSTANCE.modelToDto( user );
 
         //then
-        assertThat( userRegisDto ).isNotNull();
-        assertThat( userRegisDto.getEmail() ).isEqualTo( "anton@email.com" );
-        assertThat( userRegisDto.getPassword() ).isEqualTo( "123" );
-        assertThat( userRegisDto.getUsername() ).isEqualTo( "anton" );
+        assertThat(userRegisVO).isNotNull();
+        assertThat( userRegisVO.getEmail() ).isEqualTo( "anton@email.com" );
+        assertThat( userRegisVO.getPassword() ).isEqualTo( "123" );
+        assertThat( userRegisVO.getUsername() ).isEqualTo( "anton" );
     }
 }

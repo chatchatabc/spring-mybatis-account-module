@@ -1,4 +1,4 @@
-package com.example.user.impl.domain;
+package com.example.user.impl.domain.specifications;
 
 import com.example.user.domain.repository.UserRepository;
 import com.example.user.domain.specification.UserValidations;
