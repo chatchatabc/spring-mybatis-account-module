@@ -1,6 +1,7 @@
 package com.example.user.application.web;
 
 import com.example.user.application.commons.vo.UserRegisVO;
+import com.example.user.application.web.security.SecSecurityConfig;
 import com.example.user.domain.model.User;
 import com.example.user.domain.service.UserService;
 import com.example.user.impl.domain.error.UserAlreadyExistAuthenticationException;
@@ -10,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,9 +25,11 @@ public class UserController {
 
 
     UserService userService;
+    PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserController(UserService userService) {
+    public UserController(UserService userService, PasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
         this.userService = userService;
     }
 
@@ -39,17 +43,12 @@ public class UserController {
 
     @PostMapping("/login")
     public String authUser(User loginUser, Model model) throws ServerException {
-        User user = userService.loadUserByEmail(loginUser.getEmail(), loginUser.getPassword());
-        if (user == null) {
+        try{
+            model.addAttribute("user", userService.loadUserByEmail(loginUser.getEmail(), loginUser.getPassword()));
+            return "homepage";
+        }catch (Exception e){
             log.error("APP-100-300", loginUser.getEmail());
-            throw new ServerException("Email does not exist");
-        } else {
-            if(user.getPassword().equals(loginUser.getPassword())){
-                return "homepage";
-            }else{
-                log.error("APP-200-300");
-                throw new ServerException("Wrong Password");
-            }
+            return "login";
         }
     }
 
@@ -62,22 +61,20 @@ public class UserController {
 
     @PostMapping("/register-submit")
     public String registerUserAccount(UserRegisVO userRegisVO, Model model) {
-
-        User user = new User();
-
-        user.setUsername(userRegisVO.getUsername());
-        user.setPassword(userRegisVO.getPassword());
-        user.setEmail(userRegisVO.getEmail());
-        user.setDateCreated(LocalDate.EPOCH);
-        user.setLastLogin(LocalDate.EPOCH);
-
         try {
             if(userRegisVO.getPassword().equals(userRegisVO.getMatchingPassword())){
+                User user = new User();
+                user.setUsername(userRegisVO.getUsername());
+                user.setPassword(passwordEncoder.encode(userRegisVO.getPassword()));
+                user.setEmail(userRegisVO.getEmail());
+                user.setDateCreated(LocalDate.EPOCH);
+                user.setLastLogin(LocalDate.EPOCH);
+
                 model.addAttribute("user", userService.registerNewUserAccount(user));
                 return "homepage";
             }
             return "registration";
-        } catch (UserAlreadyExistAuthenticationException uaeEx) {
+        } catch (Exception e) {
             return "error";
         }
     }

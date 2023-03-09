@@ -9,8 +9,8 @@ INSERT INTO users
 VALUES(
           DEFAULT,
           'admin',
-          '123',
-          'admin@email.com',
+          'f9ca712cbb0e27fae06ed9e39217d7e2bf234d9c',
+          'admin@example.com',
           localtimestamp,
           localtimestamp
       )

@@ -14,6 +14,7 @@ import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.rmi.ServerException;
+import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -72,10 +73,12 @@ class UserServiceTest extends SpringBootBaseTest {
     void checkIfCanRegisterUserAccount() {
         user.setUsername("anton");
         user.setPassword("321");
-        user.setEmail("anton@anton.com");
-        int expected = 1;
-        long actual = assertDoesNotThrow(() -> userService.registerNewUserAccount(user));
-        assertEquals(actual, expected);
+        user.setEmail("anton@example.com");
+        User result = assertDoesNotThrow(() -> userService.registerNewUserAccount(user));
+        Optional<User> actual = Optional.ofNullable(result);
+        assertFalse(actual.isEmpty());
+        String expected = user.getEmail();
+        assertEquals(expected, result.getEmail());
     }
 
     @Test

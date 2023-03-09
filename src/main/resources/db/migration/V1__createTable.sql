@@ -1,4 +1,5 @@
-CREATE TABLE if not exists users
+DROP TABLE  if exists users;
+CREATE TABLE users
 (
     id SERIAL PRIMARY KEY,
     username VARCHAR,

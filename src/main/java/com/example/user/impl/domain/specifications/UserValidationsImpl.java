@@ -16,6 +16,6 @@ public class UserValidationsImpl implements UserValidations {
 
     @Override
     public boolean emailExists(String email) {
-        return userRepository.findOne(email) != null;
+        return userRepository.findUserByEmail(email) != null;
     }
 }

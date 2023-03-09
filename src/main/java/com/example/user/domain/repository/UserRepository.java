@@ -8,7 +8,7 @@ public interface UserRepository {
 
     User findUserByEmail(String email);
 
-    long createUser(User user);
+    Integer createUser(User user);
 
     void removeUser(String email);
 

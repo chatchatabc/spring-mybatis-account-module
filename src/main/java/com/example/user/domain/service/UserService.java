@@ -5,9 +5,11 @@ import com.example.user.impl.domain.error.UserAlreadyExistAuthenticationExceptio
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.rmi.ServerException;
+
 public interface UserService {
 
-    long registerNewUserAccount(User user) throws UserAlreadyExistAuthenticationException;
+    User registerNewUserAccount(User user) throws UserAlreadyExistAuthenticationException, ServerException;
 
     User loadUserByEmail(String email, String password);
 

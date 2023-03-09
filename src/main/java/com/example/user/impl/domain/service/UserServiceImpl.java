@@ -10,9 +10,11 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.rmi.ServerException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,9 +26,12 @@ public class UserServiceImpl implements UserService {
      UserRepository userRepository;
      UserValidations userValidations;
 
+     PasswordEncoder passwordEncoder;
+
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, UserValidations userValidations){
+    public UserServiceImpl(UserRepository userRepository, UserValidations userValidations, PasswordEncoder passwordEncoder){
+        this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
         this.userValidations = userValidations;
     }
@@ -34,11 +39,13 @@ public class UserServiceImpl implements UserService {
     public User loadUserByEmail(String email, String password) throws UsernameNotFoundException {
         System.out.println(email);
         User user = userRepository.findUserByEmail(email);
-        System.out.println(userRepository.findUserByEmail(email));
         ArrayList<String> role = new ArrayList<>();
         role.add("ADMIN");
         if (user == null) {
-            return null;
+            throw new UsernameNotFoundException("User does not exist");
+        }
+        if(!passwordEncoder.matches(password, user.getPassword())){
+            throw new UsernameNotFoundException("Wrong Password");
         }
         user.setRoles(role);
         user.setIsEnabled(true);
@@ -49,12 +56,15 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
-    public long registerNewUserAccount(User user) throws UserAlreadyExistAuthenticationException {
+    public User registerNewUserAccount(User user) throws UserAlreadyExistAuthenticationException, ServerException {
         if (userValidations.emailExists(user.getEmail())) {
             throw new UserAlreadyExistAuthenticationException("There is an account with that email address: "
                     + user.getEmail());
         }
-        return userRepository.createUser(user);
+        if(userRepository.createUser(user) == 1){
+            return userRepository.findUserByEmail(user.getEmail());
+        }
+        throw new ServerException("Something went wrong");
     }
 
     private static List<GrantedAuthority> getAuthorities (List<String> roles) {
