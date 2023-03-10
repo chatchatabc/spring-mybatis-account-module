@@ -1,6 +1,7 @@
 package com.example.user.domain.service;
 
 import com.example.user.SpringBootBaseTest;
+import com.example.user.application.commons.vo.UserVO;
 import com.example.user.application.web.UserController;
 import com.example.user.domain.model.User;
 import com.example.user.domain.repository.UserRepository;
@@ -42,11 +43,12 @@ class UserServiceTest extends SpringBootBaseTest {
     @ExportDataSet(format = DataSetFormat.JSON, outputName = "target/exported/service/user_login_succeed.json")
     void checkLoginSucceed() throws ServerException {
 
-        User user = new User();
+        UserVO user = new UserVO();
         user.setEmail("admin@email.com");
         user.setPassword("123");
 
         assertThat(userController.authUser(user, null)).isNotNull();
+        assertDoesNotThrow(() -> userController.authUser(user, null));
 
     }
 
@@ -55,7 +57,7 @@ class UserServiceTest extends SpringBootBaseTest {
     void checkLoginWrongPass() {
 
         Exception exception = assertThrows(ServerException.class, () -> {
-            User user = new User();
+            UserVO user = new UserVO();
             user.setEmail("admin@email.com");
             user.setPassword("1234");
             userController.authUser(user, null);

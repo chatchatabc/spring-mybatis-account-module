@@ -8,8 +8,8 @@
         <result property="username" column="username"/>
         <result property="password" column="password"/>
         <result property="email" column="email"/>
-        <result property="dateCreated" column="dateAt"/>
-        <result property="lastLogin" column="lastLogin"/>
+        <result property="dateCreated" column="dateat"/>
+        <result property="lastLogin" column="lastlogin"/>
     </resultMap>
 
     <select id="findUserByEmail" resultMap="UserResultMap">

@@ -1,6 +1,6 @@
 package com.example.user.application.web.validation;
 
-import com.example.user.application.commons.vo.UserRegisVO;
+import com.example.user.application.commons.vo.UserVO;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -14,7 +14,7 @@ public class PasswordMatchesValidator implements ConstraintValidator<PasswordMat
 
     @Override
     public boolean isValid(Object obj, ConstraintValidatorContext context){
-        UserRegisVO user = (UserRegisVO) obj;
+        UserVO user = (UserVO) obj;
         return user.getPassword().equals(user.getMatchingPassword());
     }
 }

@@ -1,16 +1,13 @@
 package com.example.user.application.web;
 
-import com.example.user.application.commons.vo.UserRegisVO;
-import com.example.user.application.web.security.SecSecurityConfig;
+import com.example.user.application.commons.vo.UserVO;
 import com.example.user.domain.model.User;
 import com.example.user.domain.service.UserService;
-import com.example.user.impl.domain.error.UserAlreadyExistAuthenticationException;
 import com.example.user.utils.error.AppErrorFactory;
 import com.example.user.utils.error.AppErrorLogger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,36 +34,47 @@ public class UserController {
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @GetMapping("/")
-    public String showLoginForm(){
+    public String showLoginFormRedirect(){
+        return "redirect:/login";
+    }
+
+    @GetMapping("/login")
+    public String showLoginFormOfficial(){
         return "login";
     }
 
-    @PostMapping("/login")
-    public String authUser(User loginUser, Model model) throws ServerException {
+    @PostMapping("/authenticate")
+    public String authUser(UserVO userVO, Model model) {
         try{
-            model.addAttribute("user", userService.loadUserByEmail(loginUser.getEmail(), loginUser.getPassword()));
+            if(userVO.getEmail().isEmpty() || userVO.getPassword().isEmpty()){
+                return "login";
+            }
+            System.out.println(userVO);
+            model.addAttribute("user", userService.loadUserByEmail(userVO.getEmail(), userVO.getPassword()));
             return "homepage";
         }catch (Exception e){
-            log.error("APP-100-300", loginUser.getEmail());
-            return "login";
+            log.error("APP-100-300", userVO.getEmail());
+            System.out.println(e.getMessage());
+            return "error";
+
         }
     }
 
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
-        UserRegisVO userRegisVO = new UserRegisVO();
-        model.addAttribute("user", userRegisVO);
+        UserVO userVO = new UserVO();
+        model.addAttribute("user", userVO);
         return "registration";
     }
 
     @PostMapping("/register-submit")
-    public String registerUserAccount(UserRegisVO userRegisVO, Model model) {
+    public String registerUserAccount(UserVO userVO, Model model) {
         try {
-            if(userRegisVO.getPassword().equals(userRegisVO.getMatchingPassword())){
+            if(userVO.getPassword().equals(userVO.getMatchingPassword())){
                 User user = new User();
-                user.setUsername(userRegisVO.getUsername());
-                user.setPassword(passwordEncoder.encode(userRegisVO.getPassword()));
-                user.setEmail(userRegisVO.getEmail());
+                user.setUsername(userVO.getUsername());
+                user.setPassword(passwordEncoder.encode(userVO.getPassword()));
+                user.setEmail(userVO.getEmail());
                 user.setDateCreated(LocalDate.EPOCH);
                 user.setLastLogin(LocalDate.EPOCH);
 

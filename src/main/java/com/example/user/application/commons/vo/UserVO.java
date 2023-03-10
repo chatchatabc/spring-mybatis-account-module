@@ -7,7 +7,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Data
-public class UserRegisVO {
+public class UserVO {
 
     @NotNull
     @NotEmpty

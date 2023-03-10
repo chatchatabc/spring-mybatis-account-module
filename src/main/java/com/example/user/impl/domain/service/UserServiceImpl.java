@@ -17,6 +17,7 @@ import javax.transaction.Transactional;
 import java.rmi.ServerException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -38,20 +39,14 @@ public class UserServiceImpl implements UserService {
 
     public User loadUserByEmail(String email, String password) throws UsernameNotFoundException {
         System.out.println(email);
-        User user = userRepository.findUserByEmail(email);
-        ArrayList<String> role = new ArrayList<>();
-        role.add("ADMIN");
+        User user = this.loadUserByUsername(email);
+
         if (user == null) {
             throw new UsernameNotFoundException("User does not exist");
         }
         if(!passwordEncoder.matches(password, user.getPassword())){
             throw new UsernameNotFoundException("Wrong Password");
         }
-        user.setRoles(role);
-        user.setIsEnabled(true);
-        user.setIsAccountNonLocked(true);
-        user.setIsCredentialsNonExpired(true);
-        user.setIsCredentialsNonExpired(true);
 
         return user;
     }
@@ -67,12 +62,14 @@ public class UserServiceImpl implements UserService {
         throw new ServerException("Something went wrong");
     }
 
-    private static List<GrantedAuthority> getAuthorities (List<String> roles) {
-        List<GrantedAuthority> authorities = new ArrayList<>();
-        for (String role : roles) {
-            authorities.add(new SimpleGrantedAuthority(role));
-        }
-        return authorities;
-    }
+    @Override
+    public User loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userRepository.findUserByEmail(username);
+        user.setIsEnabled(true);
+        user.setIsAccountNonLocked(true);
+        user.setIsCredentialsNonExpired(true);
+        user.setIsCredentialsNonExpired(true);
 
+        return user;
+    }
 }

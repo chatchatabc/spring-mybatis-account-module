@@ -4,10 +4,11 @@ import com.example.user.domain.model.User;
 import com.example.user.impl.domain.error.UserAlreadyExistAuthenticationException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.rmi.ServerException;
 
-public interface UserService {
+public interface UserService extends UserDetailsService {
 
     User registerNewUserAccount(User user) throws UserAlreadyExistAuthenticationException, ServerException;
 
