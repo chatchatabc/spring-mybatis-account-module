@@ -6,28 +6,23 @@ import com.example.user.domain.service.UserService;
 import com.example.user.domain.specification.UserValidations;
 import com.example.user.impl.domain.error.UserAlreadyExistAuthenticationException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.rmi.ServerException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional
 public class UserServiceImpl implements UserService {
 
 
-     UserRepository userRepository;
-     UserValidations userValidations;
+     final UserRepository userRepository;
 
-     PasswordEncoder passwordEncoder;
+     final UserValidations userValidations;
+
+     final PasswordEncoder passwordEncoder;
 
 
     @Autowired

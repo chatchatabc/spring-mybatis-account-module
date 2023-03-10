@@ -5,8 +5,6 @@ import com.example.user.domain.model.User;
 import com.example.user.domain.service.UserService;
 import com.example.user.utils.error.AppErrorFactory;
 import com.example.user.utils.error.AppErrorLogger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -14,9 +12,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.rmi.ServerException;
 import java.time.LocalDate;
 
+@SuppressWarnings({"SameReturnValue", "PlaceholderCountMatchesArgumentCount"})
 @Controller
 public class UserController {
 
@@ -31,7 +29,6 @@ public class UserController {
     }
 
     private static final AppErrorLogger log = AppErrorFactory.getLogger(UserController.class);
-    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @GetMapping("/")
     public String showLoginFormRedirect(){

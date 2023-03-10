@@ -1,8 +1,8 @@
 package com.example.user.application.mapper;
 
 import com.example.user.SpringBootBaseTest;
-import com.example.user.application.commons.vo.UserVO;
 import com.example.user.application.commons.mapper.UserMapper;
+import com.example.user.application.commons.vo.UserVO;
 import com.example.user.domain.model.User;
 import org.junit.jupiter.api.Test;
 

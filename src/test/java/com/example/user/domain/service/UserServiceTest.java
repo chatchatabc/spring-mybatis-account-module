@@ -41,7 +41,7 @@ class UserServiceTest extends SpringBootBaseTest {
 
     @Test
     @ExportDataSet(format = DataSetFormat.JSON, outputName = "target/exported/service/user_login_succeed.json")
-    void checkLoginSucceed() throws ServerException {
+    void checkLoginSucceed() {
 
         UserVO user = new UserVO();
         user.setEmail("admin@email.com");
