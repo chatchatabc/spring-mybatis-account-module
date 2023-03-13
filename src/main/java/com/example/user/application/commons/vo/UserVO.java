@@ -1,5 +1,6 @@
 package com.example.user.application.commons.vo;
 
+import com.example.user.application.web.validation.PasswordMatches;
 import lombok.Data;
 
 import javax.validation.constraints.Email;
@@ -16,7 +17,6 @@ public class UserVO {
     @NotNull
     @NotEmpty
     private String password;
-
     private String matchingPassword;
     @Email
     @NotNull

@@ -8,10 +8,12 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class MyBatisMapperConfiguration {
+
     @Bean
     public MapperFactoryBean<UserRepository> providerRepository(SqlSessionFactory sqlSessionFactory) {
         MapperFactoryBean<UserRepository> factoryBean = new MapperFactoryBean<>(UserRepository.class);
         factoryBean.setSqlSessionFactory(sqlSessionFactory);
         return factoryBean;
     }
+
 }

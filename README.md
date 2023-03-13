@@ -3,7 +3,7 @@
 Basic login-register template that helps speed development of the systems that needs an accounting module.
 The module is made to be modularized, making it easy to integrate with other existing modules as well as maintain.
 
-## Requirements
+# Requirements
 
 - [Docker](https://docs.docker.com/get-docker/)
 - [Postgresql (v15.0)](https://www.postgresql.org/download/)
@@ -13,13 +13,25 @@ The module is made to be modularized, making it easy to integrate with other exi
 - [Java SDK (v17.0.5)](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
 - [Github](https://git-scm.com/downloads)
 
-## Features
+# Features
 
 * Login page
 * Registration page
 * Will add more in the future
 
-## Getting Started
+# Tools
+
+* Spring Framework/Boot
+* Mapstruct
+* Spring Security
+* Database Rider
+* Spring starter test
+* Thymeleaf
+* Wavefront
+* Slf4j
+* Flywaydb
+
+# Getting Started
 
  1. Download and install Docker, Postgresql, Java with their appropriate versions.
  2. Open the application then enter the command at terminal/shell
@@ -29,11 +41,11 @@ The module is made to be modularized, making it easy to integrate with other exi
  3. check application.properties in the `/src/main/resources` if the port on `spring.datasource.url` is the same as the port assigned on the docker container 
  4. Build then run the application (Automatically creates table needed to store data if it does not exist)
     
-## Issues
+# Issues
 
 - none as of the moment
 
-## References
+# References
  - https://www.baeldung.com/thymeleaf-in-spring-mvc
  - https://www.baeldung.com/security-none-filters-none-access-permitAll
  - https://www.baeldung.com/registration-with-spring-mvc-and-spring-security

@@ -54,7 +54,9 @@ public class UserServiceImpl implements UserService {
         if(userRepository.createUser(user) == 1){
             return userRepository.findUserByEmail(user.getEmail());
         }
+
         throw new ServerException("Something went wrong");
+
     }
 
     @Override
