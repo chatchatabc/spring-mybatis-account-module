@@ -21,15 +21,16 @@ The module is made to be modularized, making it easy to integrate with other exi
 
 # Tools
 
-* Spring Framework/Boot
-* Mapstruct
-* Spring Security
-* Database Rider
-* Spring starter test
-* Thymeleaf
-* Wavefront
-* Slf4j
-* Flywaydb
+* [Spring Framework/Boot](https://spring.io/)
+* [Mapstruct](https://mapstruct.org/)
+* [Spring Security](https://docs.spring.io/spring-security/reference/index.html)
+* [Database Rider](https://github.com/database-rider/database-rider)
+* [Spring starter test](https://www.javatpoint.com/spring-boot-starter-test)
+* [Thymeleaf](https://www.thymeleaf.org/)
+* [Wavefront](https://docs.wavefront.com/wavefront_monitoring.html)
+* [Slf4j](https://www.slf4j.org/)
+* [Flywaydb](https://flywaydb.org/)
+* [MyBatis](https://mybatis.org/mybatis-3/)
 
 # Getting Started
 
@@ -46,10 +47,10 @@ The module is made to be modularized, making it easy to integrate with other exi
 - none as of the moment
 
 # References
- - https://www.baeldung.com/thymeleaf-in-spring-mvc
- - https://www.baeldung.com/security-none-filters-none-access-permitAll
- - https://www.baeldung.com/registration-with-spring-mvc-and-spring-security
- - https://www.baeldung.com/spring-security-login
- - https://mybatis.org/spring/
- - https://www.baeldung.com/spring-mybatis
- - https://www.youtube.com/watch?v=ZP8Um12Z_mk
+ - [How to setup Thymeleaf](https://www.baeldung.com/thymeleaf-in-spring-mvc)
+ - [Spring Security Filters Guide](https://www.baeldung.com/security-none-filters-none-access-permitAll)
+ - [How to make registration with Spring Security](https://www.baeldung.com/registration-with-spring-mvc-and-spring-security)
+ - [Login with Spring Security](https://www.baeldung.com/spring-security-login)
+ - [Setup spring and mybatis](https://mybatis.org/spring/)
+ - [Using spring-mybatis dependency to speed up configuration](https://www.baeldung.com/spring-mybatis)
+ - [Creating a spring-mybatis app tutorial video](https://www.youtube.com/watch?v=ZP8Um12Z_mk)
