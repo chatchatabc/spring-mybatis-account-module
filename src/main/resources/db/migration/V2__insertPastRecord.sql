@@ -14,3 +14,11 @@ VALUES(
           localtimestamp,
           localtimestamp
       )
+INSERT INTO roles
+(id,
+ rolename
+)
+VALUES(
+          DEFAULT,
+          'ADMIN'
+      )

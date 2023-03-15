@@ -1,6 +1,5 @@
 package com.example.user.application.commons.vo;
 
-import com.example.user.application.web.validation.PasswordMatches;
 import lombok.Data;
 
 import javax.validation.constraints.Email;

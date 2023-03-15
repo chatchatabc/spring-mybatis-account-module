@@ -32,13 +32,14 @@ public class UserServiceImpl implements UserService {
         this.userValidations = userValidations;
     }
 
-    public User loadUserByEmail(String email, String password) throws UsernameNotFoundException {
+    public User processUser(String email, String password) throws UsernameNotFoundException {
         System.out.println(email);
         User user = this.loadUserByUsername(email);
 
         if (user == null) {
             throw new UsernameNotFoundException("User does not exist");
         }
+
         if(!passwordEncoder.matches(password, user.getPassword())){
             throw new UsernameNotFoundException("Wrong Password");
         }

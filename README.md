@@ -47,7 +47,7 @@ The module is made to be modularized, making it easy to integrate with other exi
 - none as of the moment
 
 # References
- - [How to setup Thymeleaf](https://www.baeldung.com/thymeleaf-in-spring-mvc)
+ - [How to set up Thymeleaf](https://www.baeldung.com/thymeleaf-in-spring-mvc)
  - [Spring Security Filters Guide](https://www.baeldung.com/security-none-filters-none-access-permitAll)
  - [How to make registration with Spring Security](https://www.baeldung.com/registration-with-spring-mvc-and-spring-security)
  - [Login with Spring Security](https://www.baeldung.com/spring-security-login)

@@ -19,8 +19,8 @@ import java.time.LocalDate;
 public class UserController {
 
 
-    UserService userService;
-    PasswordEncoder passwordEncoder;
+    final UserService userService;
+    final PasswordEncoder passwordEncoder;
 
     @Autowired
     public UserController(UserService userService, PasswordEncoder passwordEncoder) {
@@ -47,7 +47,7 @@ public class UserController {
                 return "login";
             }
             System.out.println(userVO);
-            model.addAttribute("user", userService.loadUserByEmail(userVO.getEmail(), userVO.getPassword()));
+            model.addAttribute("user", userService.processUser(userVO.getEmail(), userVO.getPassword()));
             return "homepage";
         }catch (Exception e){
             log.error("APP-100-300", userVO.getEmail());
