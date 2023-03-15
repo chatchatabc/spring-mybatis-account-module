@@ -8,6 +8,7 @@
         <result property="username" column="username"/>
         <result property="password" column="password"/>
         <result property="email" column="email"/>
+        <result property="role" column="role"/>
         <result property="dateCreated" column="dateat"/>
         <result property="lastLogin" column="lastlogin"/>
     </resultMap>
@@ -33,6 +34,7 @@
              username,
              password,
              email,
+             role,
              dateAt,
              lastLogin
              )
@@ -41,6 +43,7 @@
                 #{username:VARCHAR},
                #{password:VARCHAR},
                #{email:VARCHAR},
+               #{role:VARCHAR},
                #{dateCreated:TIMESTAMP},
                #{lastLogin:TIMESTAMP}
                )

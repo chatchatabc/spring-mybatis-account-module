@@ -18,7 +18,7 @@ public class UserMapperTest extends SpringBootBaseTest {
         user.setEmail("anton@email.com");
 
         //when
-        UserVO userVO = UserMapper.INSTANCE.modelToDto( user );
+        UserVO userVO = UserMapper.INSTANCE.modelToVO( user );
 
         //then
         assertThat(userVO).isNotNull();

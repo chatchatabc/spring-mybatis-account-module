@@ -22,4 +22,6 @@ public class UserVO {
     @NotEmpty
     private String email;
 
+    private String role;
+
 }

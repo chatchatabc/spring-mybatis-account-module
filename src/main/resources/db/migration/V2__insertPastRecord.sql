@@ -3,6 +3,7 @@ INSERT INTO users
  username,
  password,
  email,
+ role,
  dateAt,
  lastLogin
 )
@@ -11,14 +12,7 @@ VALUES(
           'admin',
           'f9ca712cbb0e27fae06ed9e39217d7e2bf234d9c',
           'admin@example.com',
+          'ADMIN',
           localtimestamp,
           localtimestamp
-      )
-INSERT INTO roles
-(id,
- rolename
-)
-VALUES(
-          DEFAULT,
-          'ADMIN'
       )

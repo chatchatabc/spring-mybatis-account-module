@@ -10,6 +10,8 @@ public interface UserMapper {
 
     UserMapper INSTANCE = Mappers.getMapper(UserMapper.class);
 
-    UserVO modelToDto(User user);
+    UserVO modelToVO(User user);
+
+    User voToModel(UserVO userVO);
 
 }

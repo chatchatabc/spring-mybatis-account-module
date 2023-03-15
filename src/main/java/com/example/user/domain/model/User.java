@@ -9,6 +9,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,8 +24,11 @@ public class User implements UserDetails {
     @Email
     @Column(nullable = false, unique = true)
     private String email;
-    @ElementCollection
-    private List<String> roles;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private String role;
     private Boolean isAccountNonExpired;
     private Boolean isAccountNonLocked;
     private Boolean isEnabled;
@@ -34,8 +38,7 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return this.roles.stream().map(SimpleGrantedAuthority::new)
-                .collect(Collectors.toList());
+        return Collections.singleton(new SimpleGrantedAuthority(role));
     }
 
     @Override

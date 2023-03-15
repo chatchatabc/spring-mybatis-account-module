@@ -1,16 +1,11 @@
-DROP TABLE  if exists users;
+DROP TABLE IF EXISTS users;
 CREATE TABLE users
 (
     id SERIAL PRIMARY KEY,
     username VARCHAR,
     password VARCHAR,
     email VARCHAR,
-    roles VARCHAR,
+    role VARCHAR,
     dateAt timestamp,
     lastLogin timestamp
-);
-CREATE TABLE roles
-(
-    id SERIAL PRIMARY KEY,
-    rolename VARCHAR
 );

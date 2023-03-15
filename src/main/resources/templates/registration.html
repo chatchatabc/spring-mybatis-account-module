@@ -29,6 +29,13 @@
         <label for="match">confirm</label>
         <input id="match" type="password" th:field="*{matchingPassword}"/>
     </div>
+    <div>
+        <label for="role">Role</label>
+        <select id="role" name="role">
+            <option value="USER">User</option>
+            <option value="ADMIN">Admin</option>
+        </select>
+    </div>
     <button type="submit">submit</button>
 </form>
 

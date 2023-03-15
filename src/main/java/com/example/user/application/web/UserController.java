@@ -1,5 +1,6 @@
 package com.example.user.application.web;
 
+import com.example.user.application.commons.mapper.UserMapper;
 import com.example.user.application.commons.vo.UserVO;
 import com.example.user.domain.model.User;
 import com.example.user.domain.service.UserService;
@@ -36,14 +37,14 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public String showLoginFormOfficial(){
+    public String showLoginForm(){
         return "login";
     }
 
     @PostMapping("/authenticate")
     public String authUser(UserVO userVO, Model model) {
         try{
-            if(userVO.getEmail().isEmpty() || userVO.getPassword().isEmpty()){
+            if(userVO.getEmail().isEmpty() || userVO.getPassword().isEmpty() ){
                 return "login";
             }
             System.out.println(userVO);
@@ -68,12 +69,7 @@ public class UserController {
     public String registerUserAccount(UserVO userVO, Model model) {
         try {
             if(userVO.getPassword().equals(userVO.getMatchingPassword())){
-                User user = new User();
-                user.setUsername(userVO.getUsername());
-                user.setPassword(passwordEncoder.encode(userVO.getPassword()));
-                user.setEmail(userVO.getEmail());
-                user.setDateCreated(LocalDate.EPOCH);
-                user.setLastLogin(LocalDate.EPOCH);
+                User user = UserMapper.INSTANCE.voToModel(userVO);
 
                 model.addAttribute("user", userService.registerNewUserAccount(user));
                 return "homepage";
