@@ -53,8 +53,12 @@ public class UserServiceImpl implements UserService {
                     + user.getEmail());
         }
 
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+
         if(userRepository.createUser(user) == 1){
-            return userRepository.findUserByEmail(user.getEmail());
+            User registeredUser = userRepository.findUserByEmail(user.getEmail());
+            registeredUser.getAuthorities();
+            return registeredUser;
         }
 
         throw new ServerException("Something went wrong");
@@ -68,6 +72,7 @@ public class UserServiceImpl implements UserService {
         user.setIsAccountNonLocked(true);
         user.setIsCredentialsNonExpired(true);
         user.setIsCredentialsNonExpired(true);
+        user.getAuthorities();
 
         return user;
     }

@@ -24,10 +24,7 @@ public class User implements UserDetails {
     @Email
     @Column(nullable = false, unique = true)
     private String email;
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "user_roles",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    @Column(nullable = false)
     private String role;
     private Boolean isAccountNonExpired;
     private Boolean isAccountNonLocked;
@@ -38,7 +35,7 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton(new SimpleGrantedAuthority(role));
+        return Collections.singleton(new SimpleGrantedAuthority("ROLE_"+role));
     }
 
     @Override

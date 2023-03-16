@@ -7,11 +7,13 @@ import com.example.user.domain.service.UserService;
 import com.example.user.utils.error.AppErrorFactory;
 import com.example.user.utils.error.AppErrorLogger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDate;
 
@@ -42,14 +44,21 @@ public class UserController {
     }
 
     @PostMapping("/authenticate")
-    public String authUser(UserVO userVO, Model model) {
+    public String authUser(UserVO userVO, RedirectAttributes redirectAttributes) {
         try{
             if(userVO.getEmail().isEmpty() || userVO.getPassword().isEmpty() ){
                 return "login";
             }
-            System.out.println(userVO);
-            model.addAttribute("user", userService.processUser(userVO.getEmail(), userVO.getPassword()));
-            return "homepage";
+             User authUser = userService.processUser(userVO.getEmail(), userVO.getPassword());
+            if (authUser.getRole().equals("ADMIN")){
+                redirectAttributes.addFlashAttribute("user", authUser);
+                return "redirect:/admin/homepage";
+            }
+            if (authUser.getRole().equals("USER")){
+                redirectAttributes.addFlashAttribute("user", authUser);
+                return "redirect:/homepage";
+            }
+            return "login";
         }catch (Exception e){
             log.error("APP-100-300", userVO.getEmail());
             System.out.println(e.getMessage());
@@ -66,17 +75,25 @@ public class UserController {
     }
 
     @PostMapping("/register-submit")
-    public String registerUserAccount(UserVO userVO, Model model) {
+    public String registerUserAccount(UserVO userVO, RedirectAttributes redirectAttributes)  {
         try {
-            if(userVO.getPassword().equals(userVO.getMatchingPassword())){
-                User user = UserMapper.INSTANCE.voToModel(userVO);
-
-                model.addAttribute("user", userService.registerNewUserAccount(user));
-                return "homepage";
+            if(!userVO.getPassword().equals(userVO.getMatchingPassword())){
+                throw new Exception("Passwords do not match");
+            }
+            User user = UserMapper.INSTANCE.voToModel(userVO);
+             User result = userService.registerNewUserAccount(user);
+            if (result.getRole().equals("ADMIN")){
+                redirectAttributes.addFlashAttribute("user", result);
+                return "redirect:/admin/homepage";
+            }
+            if (result.getRole().equals("USER")){
+                redirectAttributes.addFlashAttribute("user", result);
+                return "redirect:/homepage";
             }
             return "registration";
         } catch (Exception e) {
             return "error";
         }
+
     }
 }
