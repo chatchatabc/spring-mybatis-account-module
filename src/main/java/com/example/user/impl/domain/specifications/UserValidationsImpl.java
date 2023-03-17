@@ -9,13 +9,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserValidationsImpl implements UserValidations {
 
+    UserRepository userRepository;
 
     @Autowired
-    private UserRepository userRepository;
-
+    public UserValidationsImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
     public boolean emailExists(String email) {
         return userRepository.findUserByEmail(email) != null;
     }
+
 }
